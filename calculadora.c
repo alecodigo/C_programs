@@ -8,14 +8,22 @@
 int dividirbinarios();
 int restabinario();
 int sumabinario(int a, int b);
-char decimaltobinario(char a);
+char * decimaltobinario(int numero);
+
+
+
+
+
 
 int main() {
 
 	int option; // Usada para almacenar el numero ingresado por el usuario
-	char num;
+	int num;
 	int x,y;
 	int resultado;
+	char *pointer;
+
+
 	//Menu
 	printf("Calculadora\n");
 	printf("Seleccione una opcion ingresando el numero que la precede\n");
@@ -44,9 +52,22 @@ int main() {
 
  	} else if(option == 5){
  		printf("Usted a seleccionado convertir de decimal a binario\n");
- 		scanf("%c",&num);
- 		printf("El numero es: ");
- 		printf("\t %c", decimaltobinario(num));
+ 		scanf("%d",&num); //se ingresa valor a convertir
+ 		pointer = decimaltobinario(num);
+
+ 		//Imprime vector
+		for (int j = 0; j < 8; j++ ){
+		
+			if(j == 0){
+				printf("\t\t");
+			}
+			printf("%d",*pointer++);
+
+			if(j == 7){
+				printf("\n");
+			}
+		}
+ 	
 
  	} else {
  		printf("Debe Ingresar una opcion valida\n");
@@ -75,36 +96,38 @@ int sumabinario(int a, int b)
 
 
 
-	// Esta funcion convierte un numero decimal a binario
+// Esta funcion convierte un numero decimal a binario
 
-char decimaltobinario(char numero){
+char * decimaltobinario(int numero){
 	
 	/*
 		NOTA LOS OPERADORES BINARIOS SOLO FUNCIONAN CON ENTEROS
 		char 1 byte (8 bits)
 		int 2 bytes (16 bits)
 	*/
-	int i = 0;
 	static char bin[8];
-	//char *ptr;
-	//ptr = &bin[0];
+	char *ptr;
+	ptr = bin;
 	unsigned int contador = 128; 			// 2 (n-1) n = 8 ; 2*2*2*2*2*2*2*2
+
+
+	//scanf("Ingresar un número: %d", &numero);
 
 	for(contador; contador > 0 ; contador >>= 1){
 		if (contador & numero){
 			//printf("1");			
-			bin[i] = 1;
-			i++;
+			*ptr = 1;	//Asigno el valor uno a la direccion de memorio que apunta ptr
+			ptr++;   	//incremento el apuntador
 
 		}else {
-			bin[i] = 0;
-			i++;
+			*ptr = 0;
+			ptr++;
 
 		}
 	
 	}
 	
-	return bin[8];
+	return bin;
 
 	}
 
@@ -116,7 +139,6 @@ char decimaltobinario(char numero){
     0 - 1 = 1 (genera un acarreo negativo)
     1 - 0 = 1
     1 - 1 = 0
-
 
 */
 
