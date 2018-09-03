@@ -11,37 +11,52 @@ int sumabinario(int a, int b);
 char * decimaltobinario(int numero);
 
 
+int menu(){
+	
+	static int seleccion;
+	/*Menu de la calculadora*/
+	printf("LAS OPERACIONES SERÁN SÓLO PARA NÚMEROS NO MAYORES A 1 BYTE\n");
+	printf("Seleccione una opcion ingresando el numero que la precede\n");
+	printf(" 1. Sumar Binarios \n 2. Restar Binarios\n 3. Multiplicar Binarios \n 4. Dividir Binarios \n 5. Convertir decimal a binario \n\n");
+ 	scanf("%d",&seleccion);
+ 	return seleccion;
 
+}
 
 
 
 int main() {
 
-	int option; // Usada para almacenar el numero ingresado por el usuario
+
+
+	
+	int option = menu();
 	int num;
 	int x,y;
 	int resultado;
-	char *pointer;
-
-
-	//Menu
-	printf("Calculadora\n");
-	printf("Seleccione una opcion ingresando el numero que la precede\n");
-	printf(" 1. Sumar Binarios \n 2. Restar Binarios\n 3. Multiplicar Binarios \n 4. Dividir Binarios \n 5. Convertir decimal a binario \n\n");
- 	scanf("%d",&option);
+	char *pointer; //Permite mostrar los numeros de formato decimal en binario
 
 
  	if(option == 1){
- 		printf("Usted ha seleccionado la sumadora de binarios ingresara los datos en formato decimal y el programa le mostrara el resultado en binario\n");
- 		printf("Ingrese el primer número en decimal\n");
+ 		printf("USTED SELECCIONÓ LA SUMADORA DE NÚMEROS BINARIOS\n");
+ 		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
+ 		printf("NÚMERO 1: \n");
  		scanf("%d",&x);
+ 		printf("NÚMERO 2: \n");
  		scanf("%d",&y);
  		resultado = sumabinario(x,y);
  		printf("El resultado de la suma es %d", resultado);
 
 
  	} else if(option == 2){
- 		printf("Usted ha seleccionado Restar binarios\n");
+ 		printf("USTED SELECCIONÓ RESTAR NÚMEROS BINARIOS\n");
+ 		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
+ 		printf("NÚMERO 1: \n");
+ 		scanf("%d",&x);
+ 		printf("NÚMERO 2: \n");
+ 		scanf("%d",&y);
+ 		//resultado = sumabinario(x,y);
+ 		//printf("El resultado de la suma es %d", resultado);
 
 
  	} else if(option == 3){
