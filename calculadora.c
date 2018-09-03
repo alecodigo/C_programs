@@ -81,7 +81,7 @@ int sumabinario(int x, int y)
 {
 	int carry; //acarreo
 	//El ciclo se detiene cuando no hay mas acarreo
-    while (b != 0) {
+    while (y != 0) {
         //Encontramos donde existe acarreo con AND y desplazamos y bit el resultado
         carry = (x & y) << 1;
         //sumamos
