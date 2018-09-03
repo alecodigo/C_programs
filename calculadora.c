@@ -77,22 +77,21 @@ int main() {
  	return 0;
 }
 
-int sumabinario(int a, int b)
+int sumabinario(int x, int y)
 {
-	int c; //carry
+	int carry; //acarreo
+	//El ciclo se detiene cuando no hay mas acarreo
     while (b != 0) {
-    //find carry and shift it left
-        c = (a & b) << 1;
-        printf("c es: %d",c);
-        //find the sum
-        a=a^b;
-        b=c;
+        //Encontramos donde existe acarreo con AND y desplazamos y bit el resultado
+        carry = (x & y) << 1;
+        //sumamos
+        x=x^y;
+        /*actualizamos el valor de y con el acarreo para encontrar nuevamente donde hay acarreo
+        en la siguiente iteracion. */
+        y=carry;
       }
-    return a; 
+    return x; 
 }
-
-
-
 
 
 
@@ -116,7 +115,7 @@ char * decimaltobinario(int numero){
 	for(contador; contador > 0 ; contador >>= 1){
 		if (contador & numero){
 			//printf("1");			
-			*ptr = 1;	//Asigno el valor uno a la direccion de memorio que apunta ptr
+			*ptr = 1;	//Asigno el valor uno a la direccion de memoria que apunta ptr
 			ptr++;   	//incremento el apuntador
 
 		}else {
@@ -127,7 +126,7 @@ char * decimaltobinario(int numero){
 	
 	}
 	
-	return bin;
+	return bin; //paso 
 
 	}
 
@@ -147,8 +146,8 @@ char * decimaltobinario(int numero){
 
     0 + 0 = 0
     0 + 1 = 1
-    1 + 0 = 0
-    1 + 1 = 1 (genera un acarreo)
+    1 + 0 = 1
+    1 + 1 = 0 (genera un acarreo de 1 el cual se suma a la siguiente etapa)
 
 
 */
