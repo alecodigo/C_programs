@@ -23,6 +23,21 @@ int menu() {
 
 }
 
+int printbinario(char *ptr){
+	//Imprime vector
+		for (int j = 0; j < 8; j++ ){
+		
+			if(j == 0){
+				printf("\t\t");
+			}
+			printf("%d",*ptr++);
+
+			if(j == 7){
+				printf("\n");
+			}
+		}
+}
+
 
 
 int main() {
@@ -32,7 +47,7 @@ int main() {
 	int num;
 	int x,y;
 	int resultado;
-	char *pointer; //Permite mostrar los numeros de formato decimal en binario
+	static char *pointer; //Permite mostrar los numeros de formato decimal en binario
 
 	//SUMAR 
  	if(option == 1){
@@ -43,7 +58,15 @@ int main() {
  		printf("NÚMERO 2: \n");
  		scanf("%d",&y);
  		resultado = sumabinario(x,y);
- 		printf("El resultado de la suma es %d\n", resultado);
+ 		pointer = decimaltobinario(x);
+ 		printbinario(pointer);
+ 		pointer = decimaltobinario(y);
+ 		printbinario(pointer);
+ 		printf("\t\t--------\n");
+ 		pointer = decimaltobinario(resultado);
+ 		printbinario(pointer);
+ 		
+
 
  	  //RESTAR
  	} else if(option == 2){
@@ -67,20 +90,8 @@ int main() {
  		printf("Usted a seleccionado convertir de decimal a binario\n");
  		scanf("%d",&num); //se ingresa valor a convertir
  		pointer = decimaltobinario(num);
+ 		printbinario(pointer);
 
- 		//Imprime vector
-		for (int j = 0; j < 8; j++ ){
-		
-			if(j == 0){
-				printf("\t\t");
-			}
-			printf("%d",*pointer++);
-
-			if(j == 7){
-				printf("\n");
-			}
-		}
- 	
 
  	} else {
  		printf("Debe Ingresar una opcion valida\n");
