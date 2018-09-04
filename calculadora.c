@@ -6,12 +6,12 @@
 #include <math.h>
 
 int dividirbinarios();
-int restabinario();
-int sumabinario(int a, int b);
+int restabinario(int num1, int num2);
+int sumabinario(int x, int y);
 char * decimaltobinario(int numero);
 
-
-int menu(){
+//Muestra el menu de opcciones
+int menu() {
 	
 	static int seleccion;
 	/*Menu de la calculadora*/
@@ -28,15 +28,13 @@ int menu(){
 int main() {
 
 
-
-	
 	int option = menu();
 	int num;
 	int x,y;
 	int resultado;
 	char *pointer; //Permite mostrar los numeros de formato decimal en binario
 
-
+	//SUMAR 
  	if(option == 1){
  		printf("USTED SELECCIONÓ LA SUMADORA DE NÚMEROS BINARIOS\n");
  		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
@@ -45,9 +43,9 @@ int main() {
  		printf("NÚMERO 2: \n");
  		scanf("%d",&y);
  		resultado = sumabinario(x,y);
- 		printf("El resultado de la suma es %d", resultado);
+ 		printf("El resultado de la suma es %d\n", resultado);
 
-
+ 	  //RESTAR
  	} else if(option == 2){
  		printf("USTED SELECCIONÓ RESTAR NÚMEROS BINARIOS\n");
  		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
@@ -55,8 +53,8 @@ int main() {
  		scanf("%d",&x);
  		printf("NÚMERO 2: \n");
  		scanf("%d",&y);
- 		//resultado = sumabinario(x,y);
- 		//printf("El resultado de la suma es %d", resultado);
+ 		resultado = restabinario(x,y);
+ 		printf("El resultado de la resta es %d\n", resultado);
 
 
  	} else if(option == 3){
@@ -92,6 +90,7 @@ int main() {
  	return 0;
 }
 
+
 int sumabinario(int x, int y)
 {
 	int carry; //acarreo
@@ -109,11 +108,34 @@ int sumabinario(int x, int y)
 }
 
 
+//Esta funcion realiza resta binaria
+int restabinario(int num1, int num2) 
+{
+    int carry;
+
+    //se  obtiene complemento a dos
+    num2 = sumabinario(~num2, 1);
+
+    while (num2 != 0) {
+		//Encuentro el acarreo                
+        carry = (num1 & num2) << 1;
+              
+        //realizo la suma
+		num1 = num1 ^ num2;
+		//sumo el acarreo en la siguiente iteración
+        num2 = carry;  
+    }
+    
+    return num1;
+}
+
+
+
+
+
 
 // Esta funcion convierte un numero decimal a binario
-
-char * decimaltobinario(int numero){
-	
+char * decimaltobinario(int numero){	
 	/*
 		NOTA LOS OPERADORES BINARIOS SOLO FUNCIONAN CON ENTEROS
 		char 1 byte (8 bits)
@@ -124,9 +146,6 @@ char * decimaltobinario(int numero){
 	ptr = bin;
 	unsigned int contador = 128; 			// 2 (n-1) n = 8 ; 2*2*2*2*2*2*2*2
 
-
-	//scanf("Ingresar un número: %d", &numero);
-
 	for(contador; contador > 0 ; contador >>= 1){
 		if (contador & numero){
 			//printf("1");			
@@ -136,14 +155,16 @@ char * decimaltobinario(int numero){
 		}else {
 			*ptr = 0;
 			ptr++;
-
 		}
-	
 	}
-	
 	return bin; //paso 
 
 	}
+
+
+
+
+
 
 
 /*
