@@ -9,6 +9,7 @@ int dividirbinarios();
 int restabinario(int num1, int num2);
 int sumabinario(int x, int y);
 char * decimaltobinario(int numero);
+int printbinario(char *ptr);
 
 //Muestra el menu de opcciones
 int menu() {
@@ -23,20 +24,6 @@ int menu() {
 
 }
 
-int printbinario(char *ptr){
-	//Imprime vector
-		for (int j = 0; j < 8; j++ ){
-		
-			if(j == 0){
-				printf("\t\t");
-			}
-			printf("%d",*ptr++);
-
-			if(j == 7){
-				printf("\n");
-			}
-		}
-}
 
 
 
@@ -82,6 +69,19 @@ int main() {
 
  	} else if(option == 3){
 		printf("Usted ha seleccionado Multiplicar binarios\n");
+		printf("NÚMERO 1: \n");
+ 		scanf("%d",&x);
+ 		printf("NÚMERO 2: \n");
+ 		scanf("%d",&y);
+ 		resultado = x*y;
+ 		pointer = decimaltobinario(x);
+ 		printbinario(pointer);
+ 		pointer = decimaltobinario(y);
+ 		printbinario(pointer);
+ 		printf("\t\t--------\n");
+ 		pointer = decimaltobinario(resultado);
+ 		printbinario(pointer);
+
 
  	} else if(option == 4){
  		printf("Usted ha seleccionado Dividir binarios\n");
@@ -173,7 +173,20 @@ char * decimaltobinario(int numero){
 	}
 
 
+//Imprime vector
+int printbinario(char *ptr){
+	for (int j = 0; j < 8; j++ ){
+		
+		if(j == 0){
+			printf("\t\t");
+		}
+		printf("%d",*ptr++);
 
+		if(j == 7){
+			printf("\n");
+		}
+	}
+}
 
 
 
