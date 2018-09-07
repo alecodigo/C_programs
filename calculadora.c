@@ -84,7 +84,20 @@ int main() {
 
 
  	} else if(option == 4){
- 		printf("Usted ha seleccionado Dividir binarios\n");
+ 		printf("USTED HA SELECCIONADO DIVIDIR BINARIOS\n");
+ 		printf("INGRESE EL DIVIDENDO: \n");
+ 		scanf("%d",&x);
+ 		printf("INGRESE EL DIVISOR: \n");
+ 		scanf("%d",&y);
+ 		resultado = x/y;
+ 		pointer = decimaltobinario(x);
+ 		printbinario(pointer);
+ 		pointer = decimaltobinario(y);
+ 		printbinario(pointer);
+ 		printf("\t\t--------\n");
+ 		pointer = decimaltobinario(resultado);
+ 		printbinario(pointer);
+
 
  	} else if(option == 5){
  		printf("Usted a seleccionado convertir de decimal a binario\n");
@@ -139,10 +152,6 @@ int restabinario(int num1, int num2)
     
     return num1;
 }
-
-
-
-
 
 
 // Esta funcion convierte un numero decimal a binario
