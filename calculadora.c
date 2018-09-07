@@ -10,6 +10,7 @@ int restabinario(int num1, int num2);
 int sumabinario(int x, int y);
 char * decimaltobinario(int numero);
 int printbinario(char *ptr);
+int printdiv(char *ptr2);
 
 //Muestra el menu de opcciones
 int menu() {
@@ -91,12 +92,15 @@ int main() {
  		scanf("%d",&y);
  		resultado = x/y;
  		pointer = decimaltobinario(x);
- 		printbinario(pointer);
+ 		printdiv(pointer);
+ 		printf("  ÷  ");
  		pointer = decimaltobinario(y);
- 		printbinario(pointer);
- 		printf("\t\t--------\n");
+ 		printdiv(pointer);
  		pointer = decimaltobinario(resultado);
- 		printbinario(pointer);
+ 		printf("  = ");
+ 		printdiv(pointer);
+ 		printf("\n");
+
 
 
  	} else if(option == 5){
@@ -136,10 +140,8 @@ int sumabinario(int x, int y)
 int restabinario(int num1, int num2) 
 {
     int carry;
-
     //se  obtiene complemento a dos
     num2 = sumabinario(~num2, 1);
-
     while (num2 != 0) {
 		//Encuentro el acarreo                
         carry = (num1 & num2) << 1;
@@ -182,7 +184,7 @@ char * decimaltobinario(int numero){
 	}
 
 
-//Imprime vector
+//Imprime 1 vector a la vez
 int printbinario(char *ptr){
 	for (int j = 0; j < 8; j++ ){
 		
@@ -193,6 +195,21 @@ int printbinario(char *ptr){
 
 		if(j == 7){
 			printf("\n");
+		}
+	}
+}
+
+//Imprime division
+int printdiv(char *ptr2){
+	for (int j = 0; j < 8; j++ ){
+		
+		if(j == 0){
+			printf("\t");
+		}
+		printf("%d",*ptr2++);
+
+		if(j == 7){
+			printf(" ");
 		}
 	}
 }
