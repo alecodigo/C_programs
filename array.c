@@ -16,7 +16,7 @@ int main() {
 	ptr3 = f;
 
 
-	//forma 1: Sin apunteros
+	//forma 1: Sin apuntaros
 	for(int i = 0; i < 10; i++){
 		if(c[i]+b[i] == 10){
 			f[i] = c[i]+b[i];
