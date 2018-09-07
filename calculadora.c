@@ -57,7 +57,7 @@ int main() {
 
  	  //RESTAR
  	} else if(option == 2){
- 		printf("USTED SELECCIONÓ RESTAR NÚMEROS BINARIOS\n");
+ 		printf("USTED HA SELECCIONADO RESTAR NÚMEROS BINARIOS\n");
  		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
  		printf("NÚMERO 1: \n");
  		scanf("%d",&x);
@@ -68,7 +68,7 @@ int main() {
 
 
  	} else if(option == 3){
-		printf("Usted ha seleccionado Multiplicar binarios\n");
+		printf("USTED HA SELECCIONADO MULTIPLICAR BINARIOS\n");
 		printf("NÚMERO 1: \n");
  		scanf("%d",&x);
  		printf("NÚMERO 2: \n");
@@ -100,14 +100,14 @@ int main() {
 
 
  	} else if(option == 5){
- 		printf("Usted a seleccionado convertir de decimal a binario\n");
+ 		printf("USTED HA SELECCIONADO CONVERTIR NÚMEROS DECIMALES A BINARIO\n");
  		scanf("%d",&num); //se ingresa valor a convertir
  		pointer = decimaltobinario(num);
  		printbinario(pointer);
 
 
  	} else {
- 		printf("Debe Ingresar una opcion valida\n");
+ 		printf("DEBE INGRESAR UNA OPCIÓN VALIDA\n");
 
  	}
 
