@@ -15,7 +15,7 @@ int printdiv(char *ptr2);
 //Muestra el menu de opcciones
 int menu() {
 	
-	static int seleccion;
+	int seleccion;
 	/*Menu de la calculadora*/
 	printf("LAS OPERACIONES SERÁN SÓLO PARA NÚMEROS NO MAYORES A 1 BYTE\n");
 	printf("Seleccione una opcion ingresando el numero que la precede\n");
@@ -25,101 +25,143 @@ int menu() {
 
 }
 
+int suma() {
 
-
-
-int main() {
-
-
-	int option = menu();
 	int num;
 	int x,y;
 	int resultado;
-	static char *pointer; //Permite mostrar los numeros de formato decimal en binario
-
-	//SUMAR 
- 	if(option == 1){
- 		printf("USTED SELECCIONÓ LA SUMADORA DE NÚMEROS BINARIOS\n");
- 		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
- 		printf("NÚMERO 1: \n");
- 		scanf("%d",&x);
- 		printf("NÚMERO 2: \n");
- 		scanf("%d",&y);
- 		resultado = sumabinario(x,y);
- 		pointer = decimaltobinario(x);
- 		printbinario(pointer);
- 		pointer = decimaltobinario(y);
- 		printbinario(pointer);
- 		printf("\t\t--------\n");
- 		pointer = decimaltobinario(resultado);
- 		printbinario(pointer);
- 		
+	char *pointer; //Permite mostrar los numeros de formato decimal en binario
 
 
- 	  //RESTAR
- 	} else if(option == 2){
- 		printf("USTED HA SELECCIONADO RESTAR NÚMEROS BINARIOS\n");
- 		printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
- 		printf("NÚMERO 1: \n");
- 		scanf("%d",&x);
- 		printf("NÚMERO 2: \n");
- 		scanf("%d",&y);
- 		resultado = restabinario(x,y);
- 		printf("El resultado de la resta es %d\n", resultado);
+	printf("USTED SELECCIONÓ LA SUMADORA DE NÚMEROS BINARIOS\n");
+ 	printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
+ 	printf("NÚMERO 1: \n");
+ 	scanf("%d",&x);
+ 	printf("NÚMERO 2: \n");
+ 	scanf("%d",&y);
+ 	resultado = sumabinario(x,y);
+ 	pointer = decimaltobinario(x);
+ 	printbinario(pointer);
+ 	pointer = decimaltobinario(y);
+ 	printbinario(pointer);
+ 	printf("\t\t--------\n");
+ 	pointer = decimaltobinario(resultado);
+ 	printbinario(pointer);
+
+}
+
+int resta() {
+	int num;
+	int x,y;
+	int resultado;
+	char *pointer; //Permite mostrar los numeros de formato decimal en binario
+
+	printf("USTED HA SELECCIONADO RESTAR NÚMEROS BINARIOS\n");
+ 	printf("EL RESULTADO LO OBTENDRÁ POR PANTALLA EN BINARIO\n");
+ 	printf("NÚMERO 1: \n");
+ 	scanf("%d",&x);
+ 	printf("NÚMERO 2: \n");
+ 	scanf("%d",&y);
+ 	resultado = restabinario(x,y);
+ 	printf("El resultado de la resta es %d\n", resultado);
+
+}
+
+int multiplicacion() {
+
+	int num;
+	int x,y;
+	int resultado;
+	char *pointer; //Permite mostrar los numeros de formato decimal en binario
+
+	printf("USTED HA SELECCIONADO MULTIPLICAR BINARIOS\n");
+	printf("NÚMERO 1: \n");
+	scanf("%d",&x);
+	printf("NÚMERO 2: \n");
+	scanf("%d",&y);
+	resultado = x*y;
+	pointer = decimaltobinario(x);
+	printbinario(pointer);
+	pointer = decimaltobinario(y);
+	printbinario(pointer);
+	printf("\t\t--------\n");
+	pointer = decimaltobinario(resultado);
+	printbinario(pointer);
 
 
- 	} else if(option == 3){
-		printf("USTED HA SELECCIONADO MULTIPLICAR BINARIOS\n");
-		printf("NÚMERO 1: \n");
- 		scanf("%d",&x);
- 		printf("NÚMERO 2: \n");
- 		scanf("%d",&y);
- 		resultado = x*y;
- 		pointer = decimaltobinario(x);
- 		printbinario(pointer);
- 		pointer = decimaltobinario(y);
- 		printbinario(pointer);
- 		printf("\t\t--------\n");
- 		pointer = decimaltobinario(resultado);
- 		printbinario(pointer);
+}
+
+int division() {
+
+	printf("USTED HA SELECCIONADO DIVIDIR BINARIOS\n");
+	printf("INGRESE EL DIVIDENDO: \n");
+	scanf("%d",&x);
+	printf("INGRESE EL DIVISOR: \n");
+	scanf("%d",&y);
+	resultado = x/y;
+	pointer = decimaltobinario(x);
+	printdiv(pointer);
+	printf("  ÷  ");
+	pointer = decimaltobinario(y);
+	printdiv(pointer);
+	pointer = decimaltobinario(resultado);
+	printf("  = ");
+	printdiv(pointer);
+	printf("\n");
 
 
- 	} else if(option == 4){
- 		printf("USTED HA SELECCIONADO DIVIDIR BINARIOS\n");
- 		printf("INGRESE EL DIVIDENDO: \n");
- 		scanf("%d",&x);
- 		printf("INGRESE EL DIVISOR: \n");
- 		scanf("%d",&y);
- 		resultado = x/y;
- 		pointer = decimaltobinario(x);
- 		printdiv(pointer);
- 		printf("  ÷  ");
- 		pointer = decimaltobinario(y);
- 		printdiv(pointer);
- 		pointer = decimaltobinario(resultado);
- 		printf("  = ");
- 		printdiv(pointer);
- 		printf("\n");
+}
 
 
+int decimalbinario() {
 
- 	} else if(option == 5){
- 		printf("USTED HA SELECCIONADO CONVERTIR NÚMEROS DECIMALES A BINARIO\n");
- 		scanf("%d",&num); //se ingresa valor a convertir
- 		pointer = decimaltobinario(num);
- 		printbinario(pointer);
+	printf("USTED HA SELECCIONADO CONVERTIR NÚMEROS DECIMALES A BINARIO\n");
+	scanf("%d",&num); //se ingresa valor a convertir
+	pointer = decimaltobinario(num);
+	printbinario(pointer);
 
 
- 	} else {
- 		printf("DEBE INGRESAR UNA OPCIÓN VALIDA\n");
+}
 
- 	}
+
+/******************* PROGRAMA PRINCIPAL *****************/
+
+int main() {
+
+	int option = menu();
+
+	switch(option) {
+
+		case 1:
+			suma();
+			break;
+		case 2:
+			resta();
+			break;
+		case 3:
+			multiplicacion();
+			break;
+		case 4:
+			division();
+			break;
+		case 5:
+			decimalbinario();
+			break;
+		default:
+			printf("DEBE INGRESAR UNA OPCIÓN VALIDA\n");
+
+
+	}
 
  	return 0;
 }
 
 
+
+/********************************************************/
+
 int sumabinario(int x, int y)
+
 {
 	int carry; //acarreo
 	//El ciclo se detiene cuando no hay mas acarreo
@@ -166,7 +208,7 @@ char * decimaltobinario(int numero){
 	static char bin[8];
 	char *ptr;
 	ptr = bin;
-	unsigned int contador = 128; 			// 2 (n-1) n = 8 ; 2*2*2*2*2*2*2*2
+	unsigned int contador = 128; 			// 2 ^ (n-1) n = 8 ; 2*2*2*2*2*2*2*2
 
 	for(contador; contador > 0 ; contador >>= 1){
 		if (contador & numero){
@@ -213,8 +255,6 @@ int printdiv(char *ptr2){
 		}
 	}
 }
-
-
 
 
 /*
