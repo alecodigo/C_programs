@@ -93,6 +93,12 @@ int multiplicacion() {
 
 int division() {
 
+	int num;
+	int x,y;
+	int resultado;
+	char *pointer; //Permite mostrar los numeros de formato decimal en binario
+
+
 	printf("USTED HA SELECCIONADO DIVIDIR BINARIOS\n");
 	printf("INGRESE EL DIVIDENDO: \n");
 	scanf("%d",&x);
@@ -114,6 +120,11 @@ int division() {
 
 
 int decimalbinario() {
+
+	int num;
+	int x,y;
+	int resultado;
+	char *pointer; //Permite mostrar los numeros de formato decimal en binario
 
 	printf("USTED HA SELECCIONADO CONVERTIR NÚMEROS DECIMALES A BINARIO\n");
 	scanf("%d",&num); //se ingresa valor a convertir
