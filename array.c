@@ -16,7 +16,7 @@ int main() {
 	ptr3 = f;
 
 
-	//forma 1: Sin apuntaros
+	//forma 1: Sin apuntadores
 	for(int i = 0; i < 10; i++){
 		if(c[i]+b[i] == 10){
 			f[i] = c[i]+b[i];
@@ -32,13 +32,15 @@ int main() {
 
 	// Usando apuntadores
 	for(int i = 0; i < 10; i++){
-		if(*(ptr + i) + *(ptr2 + i) == 10) {
+		if((*ptr + *ptr2 ) == 10){
 			
 			*(ptr3 + i) = *(ptr + i) + *(ptr2 + i);
-			printf("f usando apuntadores es: %d\n",*(ptr3 + i));
-			
+			printf("f usando apuntadores es: %d\n",*(ptr3 + i));	
+			ptr++;
+			ptr2++;
+		} 
 
-		} else {
+		else {
 			printf("NO HAY COINCIDENCIA\n");
 		}
 
